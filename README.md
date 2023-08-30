@@ -165,6 +165,34 @@ The models are created in the models.py file. In this case, the models are:
 
 
 
+## The design of the webpage and app
+
+For most of the styling, Bootstrap was used, and some customization was done in the style.css file.
+
+### The base template
+
+The base template is the template that is used by all the other templates. It contains the header, the footer and the navbar. It also contains the links to the Bootstrap and jQuery libraries.
+
+But, as it can be seen, the header is a nav bar, therefore, it was created sepparately in the navbar.html file, and then it was included in the base.html file by adding the following line:
+
+```HTML
+{% include 'navbar.html' %}
+```
+
+### The navbar
+
+The navbar is a Bootstrap navbar, and it is created in the navbar.html file. It contains the links to the different pages of the app, and it also contains the links to the login and registration pages.
+
+### The home page
+
+The home page is the page that is shown when the user first enters the webpage. It contains a carousel with some images, and it also contains a section with some information about the company.
+
+For the login process, no new webpage was created. Instead, it was included in the home screen as a modal. This was done by adding the following lines to the home.html file:
+
+```HTML
+{% include 'account/login.html' %}
+```
+
 
 
 
