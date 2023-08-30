@@ -39,9 +39,11 @@ First, create a env.py file in the root of the project with the following variab
 ```Python
 import os   # for os.environ.get
 
-# Get the environment variables
-os.environ.get('DATABASE_URL') == 'YOUR_DB_URL'
-os.environ.get('SECRET_KEY') == 'YOUR_SCRET_KEY!'
+# Set the environment variables
+os.environ["DATABASE_URL"]='YOUR_DB_URL'
+os.environ["SECRET_KEY"]='YOUR_SCRET_KEY!'
+# If you will work with images or static files, you will need to set the following variable
+os.environ["CLOUDINARY_URL"]="YOUR_CLOUDINARY_URL"
 ```
 
 **NOTE:** The env.py file is not pushed to GitHub because it contains sensitive information. Therefore, if you want to run the project locally, you need to create your own env.py file.
