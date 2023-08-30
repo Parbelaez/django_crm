@@ -113,6 +113,14 @@ DATABASES = {
     }
 ```
 
+### Create a superuser
+
+To be able to access the admin panel, it is needed to create a superuser by running the following command:
+
+```shell
+python3 manage.py createsuperuser
+```
+
 ### Initial deployment to Heroku
 
 As the project will be deployed in Heroku, after installing the dependencies, it is needed to create a requirements.txt file by running the following command:
@@ -128,6 +136,37 @@ Now, it is needed to create a Procfile, which is a file that tells Heroku what t
 ```Shell
 echo web: gunicorn django_crm.wsgi:application > Procfile
 ```
+
+### Add the app file to your urls definition
+
+To be able to access the app, it is needed to add the app file to the urls definition in the urls.py file. This is done by adding the following line to the urlpatterns list:
+
+```Python
+path('', include('app_crm.urls')),
+```
+
+### Create the app urls
+
+But it is the app actually, the one accessing urls. Therefore, it is needed to create the app urls by creating a urls.py file in the app folder and adding the following lines:
+
+```Python
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.home, name='home'),
+]
+```
+
+
+### Create the models
+
+The models are created in the models.py file. In this case, the models are:
+
+
+
+
+
 
 
 To be able to manage the comments and have a proper interface to do so, you need to install crispy forms by running the following command:
