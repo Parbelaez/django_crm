@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-64(ozj9f1g1!c#h6@b$9*g&w2ke#-nzh7z%9yowj(((@e#5gt7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [django-crm-pcal-d37a5aa238b8.herokuapp.com]
 
 
 # Application definition
@@ -42,8 +42,32 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount', # for social media login
+    'cloudinary_storage',
+    'django.contrib.staticfiles',
+    'cloudinary',
+    'django_summernote', # with underscore... django libraries should not have hyphens
+    'crispy_forms',
+    'crispy_bootstrap4',
     'app_crm',
 ]
+
+SITE_ID = 1
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
+MESSAGE_TAGS = {
+    messages.DEBUG: 'alert-info',
+    messages.INFO: 'alert-info',
+    messages.SUCCESS: 'alert-success',
+    messages.WARNING: 'alert-warning',
+    messages.ERROR: 'alert-danger',
+}
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

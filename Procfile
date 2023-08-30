@@ -1,1 +1,1 @@
-web: gunicorn django_crm.wsgi:application
+web: gunicorn django_crm.wsgi
