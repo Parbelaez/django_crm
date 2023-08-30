@@ -45,12 +45,12 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount', # for social media login
-    'cloudinary_storage',
-    'django.contrib.staticfiles',
-    'cloudinary',
-    'django_summernote', # with underscore... django libraries should not have hyphens
-    'crispy_forms',
-    'crispy_bootstrap4',
+    # 'cloudinary_storage',
+    # 'django.contrib.staticfiles',
+    # 'cloudinary',
+    # 'django_summernote', # with underscore... django libraries should not have hyphens
+    # 'crispy_forms',
+    # 'crispy_bootstrap4',
     'app_crm',
 ]
 
