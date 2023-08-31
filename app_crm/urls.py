@@ -3,6 +3,11 @@ from . import views
 
 urlpatterns = [
     path('', views.home, name='home'),
-    path('login', views.login_user, name='login'),
+
+    # The login function is only needed if you are not using the allauth library
+    # and/or if you would like to create your own login page - we are using the
+    # home page as our login page, so we do not need this function
+    # path('login', views.login_user, name='login'),
+    
     path('logout', views.logout_user, name='logout'),
 ]
