@@ -47,9 +47,22 @@
           type="search"
           placeholder="Search"
           aria-label="Search"
-        /> {% endcomment %}
-        {% comment %} <button class="btn btn-outline-success" type="submit">Search</button> {% endcomment %}
-      </form>
+        />
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form> {% endcomment %}
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'home' %}">Login</a>
+        </li>
+        {% comment %} <li class="nav-item">
+          <a class="nav-link" href="{% url 'register' %}">Register</a>
+        </li> {% endcomment %}
+        {% endif %}
     </div>
   </div>
 </nav>
