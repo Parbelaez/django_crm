@@ -193,6 +193,15 @@ For the login process, no new webpage was created. Instead, it was included in t
 {% include 'account/login.html' %}
 ```
 
+For the logout, a new webpage was created, and it was added to the navbar. This was done by adding the following lines to the navbar.html file:
+
+```HTML
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+</li>
+```
+
+For the register, also a new webpage was created, and the form was crated directly with Django. The reason behind this is that we need some extra fields and controls on them, like: the password confirmation, the email confirmation, the captcha, and the password rules (number of characters, and so on...). 
 
 
 
