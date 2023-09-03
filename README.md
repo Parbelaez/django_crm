@@ -285,6 +285,10 @@ Django will automatically pluralize the name of the model, so it will be Records
 
 [Django models](./README%20images/models.png)
 
+And, will create the table in the database.
+
+[Postgres DB](./README%20images/DB.png)
+
 
 ### View the records in the website
 
