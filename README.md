@@ -309,6 +309,8 @@ def records(request):
     return render(request, 'records/records.html', context)
 ```
 
+*NOTE:* in the views file in this project, the records are rendered in the home page, but this is not the best practice. The best practice is to create a new page for the records, and render them there. So, differences in the code may be found.
+
 Then, it is needed to create the records.html file in the templates/records folder. This is done by running the following command:
 
 ```shell

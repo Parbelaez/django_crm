@@ -2,9 +2,12 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .forms import RegisterForm
+from .models import Record
 
 # Create your views here.
 def home(request):
+    # Get all the records in the table and pass it to the records variable
+    records = Record.objects.all()
     # Check to see if logging in
     if request.method == 'POST':
         # Get the values from the form
@@ -32,7 +35,7 @@ def home(request):
     # If not logging in
     else:
         # Render the home page
-        return render(request, 'home.html', {})
+        return render(request, 'home.html', {'records':records})
 
 def login_user(request):
     pass
