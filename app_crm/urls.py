@@ -11,4 +11,5 @@ urlpatterns = [
 
     path('logout', views.logout_user, name='logout'),
     path('register', views.register_user, name='register'),
+    path('record/<int:user_id>', views.customer_record, name='record'),
 ]

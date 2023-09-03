@@ -88,3 +88,14 @@ def register_user(request):
         return render(request, 'register.html', {'form':form, 'title':'Register'})
     
     return render(request, 'register.html', {'form':form, 'title':'Register'})
+
+def customer_record(request, user_id):
+    if request.user.is_authenticated:
+        # Get the record for the user
+        customer_record = Record.objects.get(id=user_id)
+        # Render the record page
+        return render(request, 
+                        'record.html', {'customer_record':customer_record})
+    else:
+        messages.success(request, ('Please login to view the records...'))
+        return redirect('home')
