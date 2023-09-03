@@ -201,9 +201,47 @@ For the logout, a new webpage was created, and it was added to the navbar. This 
 </li>
 ```
 
-For the register, also a new webpage was created, and the form was crated directly with Django. The reason behind this is that we need some extra fields and controls on them, like: the password confirmation, the email confirmation, the captcha, and the password rules (number of characters, and so on...). 
+For the register, also a new webpage was created, and the form was crated directly with Django. The reason behind this is that we need some extra fields and controls on them, like: the password confirmation, the email confirmation, the captcha, and the password rules (number of characters, and so on...).
 
 
+*NOTE:* as seen in the comments of the views.py file, the password field must be gotten using the get method, and not the post method. This is because Django does not allow to get the password using the post method (reported bug).
+
+
+### OPTIONAL: Captcha and crispy forms
+
+The captcha was added by using the django-simple-captcha package. To install it, run the following command:
+
+```shell
+pip3 install django-simple-captcha
+```
+
+Then, add the following line to the INSTALLED_APPS list in the settings.py file:
+
+```Python
+'captcha',
+```
+
+And, add the following lines to the settings.py file:
+
+```Python
+CAPTCHA_LENGTH = 6
+CAPTCHA_FONT_SIZE = 30
+CAPTCHA_LETTER_ROTATION = (-35, 35)
+CAPTCHA_BACKGROUND_COLOR = '#ffffff'
+CAPTCHA_FOREGROUND_COLOR = '#000000'
+CAPTCHA_NOISE_FUNCTIONS = ('captcha.helpers.noise_dots',)
+CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.random_char_challenge'
+CAPTCHA_OUTPUT_FORMAT = u'%(image)s %(hidden_field)s %(text_field)s'
+```
+
+To be able to use the captcha in the registration form, it is needed to add the following lines to the register.html file:
+
+```HTML
+{% load captcha %}
+{% captcha_image %}
+{% captcha_hidden_field %}
+{% captcha_text_field %}
+```
 
 
 To be able to manage the comments and have a proper interface to do so, you need to install crispy forms by running the following command:
@@ -223,3 +261,59 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 NOTE: As of django-crispy-forms 2.0 the template packs are now in separate packages.
 
 You will need to pip install crispy-bootstrap4 and add crispy_bootstrap4 to your list of INSTALLED_APPS.
+
+
+### Create the models (DB structure)
+
+The models are created in the models.py file. In this case, the models are:
+
+* Record: this is users table, which in Django is treated as a Python Class. So, basically, after creating a class, Django will create an object during the makemigrations process. Which is then used to create the table in the database during the migrate process.
+
+But, the table is not yet accessible in the admin panel. To do so, it is needed to create a superuser by running the following command (already done):
+
+```shell
+python3 manage.py createsuperuser
+```
+
+Then, it is needed to register the model in the admin.py file by adding the following lines:
+
+```Python
+from .models import Record
+```
+
+Django will automatically pluralize the name of the model, so it will be Records in the admin panel.
+
+[Django models](./README%20images/models.png)
+
+
+### View the records in the website
+
+To be able to view the records in the website, it is needed to create a view in the views.py file. This is done by adding the following lines:
+
+```Python
+from .models import Record
+
+def records(request):
+    """ A view to return the records page """
+
+    records = Record.objects.all()
+
+    context = {
+        'records': records,
+    }
+
+    return render(request, 'records/records.html', context)
+```
+
+Then, it is needed to create the records.html file in the templates/records folder. This is done by running the following command:
+
+```shell
+touch templates/records/records.html
+```
+
+And, it is needed to add the following lines to the urls.py file:
+
+```Python
+path('records/', views.records, name='records'),
+```
+
