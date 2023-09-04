@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .forms import RegisterForm
+from .forms import RegisterForm, AddRecordForm
 from .models import Record
 
 # Create your views here.
@@ -114,6 +114,19 @@ def delete_record(request, user_id):
         messages.success(request, ('Please login to delete records...'))
         return redirect('home')
     
-def add_record(request, user_id):
+def add_record(request):
+    form = AddRecordForm(request.POST or None)
     if request.user.is_authenticated:
+        if request.method == 'POST':
+            if form.is_valid():
+                # Save the record
+                form.save()
+                # Send a message to the user
+                messages.success(request, ('Record has been added...'))
+                # Redirect the user to the home page
+                return redirect('home')
+        return render(request, 'add_record.html', {'form':form})
+    else:
+        messages.success(request, ('Please login to add records...'))
+        return redirect('home')
         
