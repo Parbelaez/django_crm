@@ -16,7 +16,7 @@
             <br><strong>Member Since: </strong>{{ customer_record.created_at }}
         </p>
         <a href="{% url 'home' %}" class="btn btn-primary">Back to main</a>
-        <a href="{% url 'home' %}" class="btn btn-danger">Delete User</a>
+        <a href="{% url 'delete_record' customer_record.id %}" class="btn btn-danger">Delete User</a>
     </div>
 </div>
 {% endblock %}
