@@ -9,7 +9,7 @@
 First, it is needed to create a virtual environment, which is a folder that contains a Python installation and all the packages needed for the project. This is done by running the following command at the root of the project:
 
 ```Python
-python3 -m venv venv
+python3 -m venv .venv
 ```
 
 **NOTE**: The name of the virtual environment folder is .venv, which is the default name. If you want to use a different name, you should add the name of the folder to the .gitignore file. Also, ```python3``` was used because the project was developed on a Mac. If you are using Windows, you should use ```python``` instead.
@@ -17,7 +17,7 @@ python3 -m venv venv
 Then, the virtual environment is activated by running the following command:
 
 ```Python
-source venv/bin/activate
+source .venv/bin/activate
 ```
 
 Finally, the dependencies are installed by running the following command:
