@@ -323,3 +323,80 @@ And, it is needed to add the following lines to the urls.py file:
 path('records/', views.records, name='records'),
 ```
 
+## Deployment -Heroku-
+
+### Create a Heroku account
+
+First, it is needed to create a Heroku account. This is done by going to the [Heroku website](https://www.heroku.com/) and clicking on the Sign Up button.
+
+### Install Heroku
+
+Then, it is needed to install Heroku. This is done by running the following command:
+
+```shell
+npm install -g heroku
+```
+
+### Install the Heroku CLI
+
+Then, it is needed to install the Heroku CLI. This is done by running the following command:
+
+```shell
+brew tap heroku/brew && brew install heroku
+```
+
+### Install django-heroku
+
+Then, it is needed to install django-heroku. This is done by running the following command:
+
+```shell
+pip3 install django-heroku
+```
+
+### Create a Procfile
+
+Then, it is needed to create a Procfile. This is done by running the following command:
+
+```shell
+echo web: gunicorn django_crm.wsgi:application > Procfile
+```
+
+### Create a requirements.txt file
+
+Then, it is needed to create a requirements.txt file. This is done by running the following command:
+
+```shell
+pip3 freeze > requirements.txt
+```
+
+### Install python-decouple
+
+Then, it is needed to install python-decouple. This is done by running the following command:
+
+```shell
+pip3 install python-decouple
+```
+
+
+### Login to Heroku
+
+Then, it is needed to login to Heroku. This is done by running the following command:
+
+```shell
+heroku login
+```
+
+### Create a Heroku app
+
+Then, it is needed to create a Heroku app. This is done by running the following command:
+
+```shell
+heroku create
+```
+
+### Add the environment variables to Heroku
+
+Then, it is needed to add the environment variables to Heroku. This is done by running the following command:
+
+```shell
+
