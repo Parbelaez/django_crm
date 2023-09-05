@@ -112,6 +112,15 @@ DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
     }
 ```
+### Migrations
+
+Everytime a change is made to the models (db structure), it is needed to run the following commands:
+
+```shell
+python3 manage.py makemigrations
+python3 manage.py migrate
+```
+...and as we created all necessary setup to be able to run a DB in the project, we need to run the commands above.
 
 ### Create a superuser
 
